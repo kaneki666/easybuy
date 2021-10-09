@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:easybuy/components/button.dart';
 import 'package:easybuy/components/custom_textformfield.dart';
+import 'package:easybuy/constants/helperFunctions.dart';
+import 'package:easybuy/model/user.dart';
 import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +20,13 @@ class _SignUpFormState extends State<SignUpForm> {
   final GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
 
   bool getEmail = true;
+  bool hidePassword = true;
+  UserModel userData = UserModel(email: '', password: '', confirm: '');
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String theme = 'Dark';
+
     return Form(
       key: formKeySignUp,
       child: Stack(
@@ -32,11 +38,21 @@ class _SignUpFormState extends State<SignUpForm> {
               width: size.width * 0.85,
               child: CustomTextFieldForm(
                 hintText: "Email",
+                onChanged: (e) {
+                  setState(() {
+                    if (mounted) {
+                      userData.email = e;
+                    }
+                  });
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
+                  } else if (Validation().isValidEmail(value)) {
+                    return null;
+                  } else {
+                    return "Invalid Email";
                   }
-                  return null;
                 },
               ),
             ),
@@ -47,11 +63,21 @@ class _SignUpFormState extends State<SignUpForm> {
               width: size.width * 0.85,
               child: CustomTextFieldForm(
                 hintText: "Password (8 or more  Alphanumeric characters)",
+                onChanged: (e) {
+                  setState(() {
+                    if (mounted) {
+                      userData.password = e;
+                    }
+                  });
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
+                  } else if (Validation().isValidPassword(value)) {
+                    return null;
+                  } else {
+                    return "Password should be Alphanumeric";
                   }
-                  return null;
                 },
               ),
             ),
@@ -62,9 +88,12 @@ class _SignUpFormState extends State<SignUpForm> {
               width: size.width * 0.85,
               child: CustomTextFieldForm(
                 hintText: "Confirm",
+                onChanged: (e) {},
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
+                  } else if (value != userData.password) {
+                    return "Doesn't match";
                   }
                   return null;
                 },
@@ -101,7 +130,28 @@ class _SignUpFormState extends State<SignUpForm> {
             top: size.height * 0.45,
             child: CustomButton(
               buttonText: "Create Account",
-              onPress: () {},
+              onPress: () {
+                if (formKeySignUp.currentState!.validate()) {}
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    actionsPadding: EdgeInsets.only(
+                        top: EasyBuyTheme.paddingXL,
+                        bottom: EasyBuyTheme.paddingXL),
+                    backgroundColor: Theme.of(context).primaryColorLight,
+                    actionsAlignment: MainAxisAlignment.spaceEvenly,
+                    actions: [
+                      CircularProgressIndicator(
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                      const Text("Signing In")
+                    ],
+                  ),
+                );
+                Timer(const Duration(milliseconds: 1000), () {
+                  Navigator.of(context).pop();
+                });
+              },
               btnColor: Theme.of(context).primaryColorLight,
             ),
           ),

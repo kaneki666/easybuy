@@ -1,4 +1,5 @@
 import 'package:easybuy/screens/splash/components/signin_form.dart';
+import 'package:easybuy/screens/splash/components/signup_form.dart';
 import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,6 @@ class _FormContainerState extends State<FormContainer> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String theme = 'Dark';
 
     return SizedBox(
       height: size.height * 0.9,
@@ -47,10 +47,10 @@ class _FormContainerState extends State<FormContainer> {
               style: Theme.of(context).textTheme.headline2,
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               SignInForm(),
-              SignInForm(),
+              SignUpForm(),
             ],
           ),
         ),

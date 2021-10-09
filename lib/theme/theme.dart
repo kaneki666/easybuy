@@ -14,6 +14,8 @@ class EasyBuyTheme {
   static Color colorTeal = const Color(0xff00b27f);
   static Color colorDarkButton = const Color(0xff424242);
   static Color colorWhiteButton = const Color(0x0fffffff);
+  static Color colorItemUnselected = const Color(0x0f616161);
+  static Color colorDiscountPercentage = const Color(0xff397099);
   // lightheme
 
   //textthemelight
@@ -36,10 +38,22 @@ class EasyBuyTheme {
       color: Colors.black,
       letterSpacing: 1.8,
     ),
+    headline4: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      letterSpacing: 1.5,
+    ),
+    bodyText1: TextStyle(
+        fontFamily: "Teletex Regular",
+        fontSize: 15,
+        letterSpacing: 1.5,
+        color: Colors.grey,
+        fontWeight: FontWeight.w300),
     button: TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: Colors.black,
+      color: Colors.white,
       letterSpacing: 1.3,
     ),
   );
@@ -53,7 +67,7 @@ class EasyBuyTheme {
     focusedBorder:
         UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
     focusColor: Colors.grey,
-    hintStyle: TextStyle(color: Colors.grey),
+    labelStyle: TextStyle(color: Colors.grey),
   );
 
   // darktheme
@@ -78,10 +92,22 @@ class EasyBuyTheme {
       color: Colors.white,
       letterSpacing: 1.8,
     ),
+    headline4: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      letterSpacing: 1.5,
+    ),
+    bodyText1: TextStyle(
+        fontFamily: "Teletex Regular",
+        fontSize: 15,
+        letterSpacing: 1.5,
+        color: Colors.grey,
+        fontWeight: FontWeight.w300),
     button: TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 1.3,
     ),
   );
@@ -92,40 +118,49 @@ class EasyBuyTheme {
     labelColor: Colors.white,
   );
 
+  static BottomAppBarTheme tabBottomDark =
+      const BottomAppBarTheme(color: Colors.white);
+
   static InputDecorationTheme inputDarkTheme = const InputDecorationTheme(
     focusedBorder:
         UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
     focusColor: Colors.grey,
-    hintStyle: TextStyle(color: Colors.grey),
+    labelStyle: TextStyle(color: Colors.grey),
   );
 
   static ThemeData light() {
     return ThemeData(
-        primaryColorLight: Colors.white,
-        primaryColorDark: Colors.black,
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: Colors.white,
-        checkboxTheme: CheckboxThemeData(
-          fillColor: MaterialStateColor.resolveWith(
-            (states) {
-              return Colors.black;
-            },
+      primaryColorLight: const Color(0x0feeeeee),
+      primaryColorDark: Colors.grey[800],
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: Colors.white,
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStateColor.resolveWith(
+          (states) {
+            return Colors.black;
+          },
+        ),
+      ),
+      appBarTheme: const AppBarTheme(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          selectedIconTheme: IconThemeData(color: Colors.black),
+          unselectedIconTheme: IconThemeData(
+            color: Colors.grey,
           ),
-        ),
-        appBarTheme: const AppBarTheme(
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.black,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.green,
-        ),
-        textTheme: lightTextTheme,
-        inputDecorationTheme: inputLightTheme,
-        tabBarTheme: tablight);
+          selectedLabelStyle: TextStyle(color: Colors.black)),
+      textTheme: lightTextTheme,
+      inputDecorationTheme: inputLightTheme,
+      tabBarTheme: tablight,
+    );
   }
 
   // 4
@@ -144,10 +179,34 @@ class EasyBuyTheme {
           backgroundColor: Colors.green,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.green,
-        ),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Color(0x99FFFFFF),
+            selectedIconTheme: IconThemeData(color: Colors.white),
+            unselectedIconTheme: IconThemeData(
+              color: Color(0x99FFFFFF),
+            ),
+            selectedLabelStyle: TextStyle(color: Colors.white)),
         textTheme: darkTextTheme,
         inputDecorationTheme: inputDarkTheme,
         tabBarTheme: tabDark);
   }
+
+  //styles
+  static TextStyle showPasswordText = TextStyle(
+      fontSize: 14,
+      color: colorTeal,
+      letterSpacing: 1.2,
+      fontWeight: FontWeight.bold);
+
+  static TextStyle discountTitleItalic = const TextStyle(
+      fontFamily: "Filosofia Italic",
+      fontSize: 16,
+      color: Colors.white,
+      fontWeight: FontWeight.bold);
+  static TextStyle discountTextPercentage = TextStyle(
+      fontFamily: "Teletex Regular",
+      fontSize: 22,
+      letterSpacing: 1.5,
+      color: colorDiscountPercentage,
+      fontWeight: FontWeight.bold);
 }

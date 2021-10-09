@@ -1,3 +1,4 @@
+import 'package:easybuy/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:easybuy/screens/splash/splash.dart';
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme,
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }

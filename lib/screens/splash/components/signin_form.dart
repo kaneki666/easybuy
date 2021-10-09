@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:easybuy/components/button.dart';
 import 'package:easybuy/components/custom_textformfield.dart';
+import 'package:easybuy/constants/helperFunctions.dart';
+import 'package:easybuy/model/user.dart';
+import 'package:easybuy/screens/home/home.dart';
 import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +21,13 @@ class _SignInFormState extends State<SignInForm> {
   final GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
 
   bool getEmail = true;
+  bool hidePassword = true;
+  UserModel userData = UserModel(email: '', password: '');
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String theme = 'Dark';
+
     return Form(
       key: formKeySignIn,
       child: Stack(
@@ -30,11 +37,21 @@ class _SignInFormState extends State<SignInForm> {
             top: size.height * 0.05,
             child: CustomTextFieldForm(
               hintText: "Email",
+              onChanged: (e) {
+                setState(() {
+                  if (mounted) {
+                    userData.email = e;
+                  }
+                });
+              },
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter some text';
+                } else if (Validation().isValidEmail(value)) {
+                  return null;
+                } else {
+                  return "Invalid Email";
                 }
-                return null;
               },
             ),
           ),
@@ -43,13 +60,41 @@ class _SignInFormState extends State<SignInForm> {
             child: SizedBox(
               width: size.width * 0.85,
               child: CustomTextFieldForm(
-                hintText: "Password (8 or more  Alphanumeric characters)",
+                obscureText: hidePassword,
+                onChanged: (e) {
+                  setState(() {
+                    if (mounted) {
+                      userData.password = e;
+                    }
+                  });
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
+                  } else if (Validation().isValidPassword(value)) {
+                    return null;
+                  } else {
+                    return "Password should be Alphanumeric";
                   }
-                  return null;
                 },
+                hintText: "Password (8 or more  Alphanumeric characters)",
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.26,
+            left: size.width * 0.63,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (mounted) {
+                    hidePassword = !hidePassword;
+                  }
+                });
+              },
+              child: Text(
+                'Show Password',
+                style: EasyBuyTheme.showPasswordText,
               ),
             ),
           ),
@@ -83,8 +128,37 @@ class _SignInFormState extends State<SignInForm> {
             top: size.height * 0.45,
             child: CustomButton(
               buttonText: "Sign In",
-              onPress: () {},
-              btnColor: Theme.of(context).primaryColorLight,
+              onPress: () {
+                if (formKeySignIn.currentState!.validate()) {}
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    actionsPadding: EdgeInsets.only(
+                        top: EasyBuyTheme.paddingXL,
+                        bottom: EasyBuyTheme.paddingXL),
+                    backgroundColor: Theme.of(context).primaryColorLight,
+                    actionsAlignment: MainAxisAlignment.spaceEvenly,
+                    actions: [
+                      CircularProgressIndicator(
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                      const Text("Signing In")
+                    ],
+                  ),
+                );
+                Timer(
+                  const Duration(milliseconds: 1000),
+                  () {
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  },
+                );
+              },
+              btnColor: Theme.of(context).primaryColorDark,
             ),
           ),
           Positioned(

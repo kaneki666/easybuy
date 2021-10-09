@@ -1,16 +1,6 @@
-import 'dart:developer';
-
-import 'package:easybuy/components/button.dart';
-import 'package:easybuy/constants/helperFunctions.dart';
-import 'package:easybuy/screens/splash/components/form_container.dart';
-import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-const String kArtwork = "Left";
-const String kPastJobs = "Right";
-const EdgeInsets kPaddingTabBar = EdgeInsets.all(5.0);
-const Color kLightGrey = Colors.grey;
+import 'package:easybuy/components/button.dart';
+import 'package:easybuy/screens/splash/components/form_container.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -43,7 +33,7 @@ class SplashScreen extends StatelessWidget {
           Positioned(
             top: size.height * 0.75,
             child: CustomButton(
-              btnColor: Theme.of(context).primaryColorLight,
+              btnColor: Theme.of(context).primaryColorDark,
               buttonText: "Sign In",
               onPress: () {
                 showModalBottomSheet<void>(
@@ -57,9 +47,9 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: size.height * 0.85,
+            top: size.height * 0.83,
             child: CustomButton(
-              btnColor: Theme.of(context).primaryColorLight,
+              btnColor: Theme.of(context).primaryColorDark,
               buttonText: "Create Account",
               onPress: () {
                 splashScaffoldKey.currentState?.showBottomSheet<void>(
