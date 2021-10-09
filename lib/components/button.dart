@@ -7,13 +7,11 @@ class CustomButton extends StatelessWidget {
     required this.buttonText,
     required this.onPress,
     required this.btnColor,
-    required this.textColor,
   }) : super(key: key);
 
   final String buttonText;
   final VoidCallback onPress;
   final Color btnColor;
-  final Color textColor;
 
   @override
   Widget build(BuildContext context) {

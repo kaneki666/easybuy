@@ -12,15 +12,17 @@ class EasyBuyTheme {
 
   //colors
   static Color colorTeal = const Color(0xff00b27f);
+  static Color colorDarkButton = const Color(0xff424242);
+  static Color colorWhiteButton = const Color(0x0fffffff);
   // lightheme
 
   //textthemelight
   static TextTheme lightTextTheme = const TextTheme(
     headline1: TextStyle(
-        fontSize: 32.0,
+        fontSize: 40.0,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
-        letterSpacing: 1.8,
+        color: Colors.white,
+        letterSpacing: 2,
         fontFamily: "Teletex Regular"),
     headline2: TextStyle(
         fontSize: 25.0,
@@ -37,10 +39,11 @@ class EasyBuyTheme {
     button: TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 1.3,
     ),
   );
+
 //tabbartheme
   static TabBarTheme tablight = const TabBarTheme(
     labelColor: Colors.black,
@@ -48,7 +51,7 @@ class EasyBuyTheme {
 
   static InputDecorationTheme inputLightTheme = const InputDecorationTheme(
     focusedBorder:
-        UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+        UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
     focusColor: Colors.grey,
     hintStyle: TextStyle(color: Colors.grey),
   );
@@ -58,10 +61,10 @@ class EasyBuyTheme {
   //textthemedark
   static TextTheme darkTextTheme = const TextTheme(
     headline1: TextStyle(
-        fontSize: 32.0,
+        fontSize: 40.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
-        letterSpacing: 1.8,
+        letterSpacing: 2,
         fontFamily: "Teletex Regular"),
     headline2: TextStyle(
         fontSize: 25.0,
@@ -78,7 +81,7 @@ class EasyBuyTheme {
     button: TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: Colors.black,
+      color: Colors.white,
       letterSpacing: 1.3,
     ),
   );
@@ -98,6 +101,8 @@ class EasyBuyTheme {
 
   static ThemeData light() {
     return ThemeData(
+        primaryColorLight: Colors.white,
+        primaryColorDark: Colors.black,
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
         checkboxTheme: CheckboxThemeData(
@@ -127,6 +132,8 @@ class EasyBuyTheme {
   static ThemeData dark() {
     return ThemeData(
         brightness: Brightness.dark,
+        primaryColorLight: Colors.grey[800],
+        primaryColorDark: Colors.white,
         scaffoldBackgroundColor: Colors.grey[900],
         appBarTheme: AppBarTheme(
           foregroundColor: Colors.white,
