@@ -1,8 +1,12 @@
 import 'package:easybuy/model/product.dart';
+import 'package:easybuy/model/product_type.dart';
+import 'package:easybuy/screens/home/components/build_app_bar.dart';
+import 'package:easybuy/screens/home/components/category_product_grid.dart';
+import 'package:easybuy/screens/home/components/filter_product_type.dart';
 import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class CatrgoryScreen extends StatelessWidget {
+class CatrgoryScreen extends StatefulWidget {
   const CatrgoryScreen(
       {Key? key, required this.pageTitle, required this.category})
       : super(key: key);
@@ -11,110 +15,114 @@ class CatrgoryScreen extends StatelessWidget {
   final Category? category;
 
   @override
+  State<CatrgoryScreen> createState() => _CatrgoryScreenState();
+}
+
+class _CatrgoryScreenState extends State<CatrgoryScreen> {
+  List<ProductModel> myProducts = [];
+  ProductTypeModel? productTypeObj = productTypesData[0];
+  bool flitered = false;
+
+  void filterProductType(productType) {
+    setState(() {
+      if (mounted) {
+        myProducts =
+            demoProducts.where((i) => i.productType == productType).toList();
+        productTypeObj = productTypesData
+            .firstWhere((element) => element.type == productType);
+        flitered = true;
+      }
+    });
+    Navigator.pop(context);
+  }
+
+  void clearFilter() {
+    setState(() {
+      if (mounted) {
+        myProducts =
+            demoProducts.where((i) => i.category == widget.category).toList();
+        flitered = false;
+      }
+    });
+    Navigator.pop(context);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      if (mounted) {
+        myProducts =
+            demoProducts.where((i) => i.category == widget.category).toList();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<ProductModel> myProducts =
-        demoProducts.where((i) => i.category == category).toList();
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        title: Text(pageTitle!),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: EasyBuyTheme.paddingS),
-            child: const Icon(Icons.local_mall_outlined),
-          ),
-        ],
-      ),
+      appBar: buildAppBar(widget.pageTitle),
       body: Padding(
         padding: EdgeInsets.all(EasyBuyTheme.paddingL),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 250,
-            mainAxisExtent: 440,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: EasyBuyTheme.paddingL,
-            mainAxisSpacing: EasyBuyTheme.paddingL,
-          ),
-          itemCount: myProducts.length,
-          itemBuilder: (BuildContext ctx, index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Material(
-                  elevation: 1,
-                  child: Container(
-                    height: 320,
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColorLight),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          myProducts[index].images![0],
-                          height: 320,
-                          fit: BoxFit.cover,
-                        ),
-                        const Positioned(
-                          top: 10,
-                          right: 10,
-                          child: Icon(
-                            Icons.favorite_outline,
-                            color: Colors.redAccent,
-                          ),
-                        )
-                      ],
+                SizedBox(
+                  width: size.width * 0.7,
+                  child: TextField(
+                    onChanged: (e) {
+                      setState(() {
+                        myProducts = demoProducts
+                            .where((element) => element.name!
+                                .toLowerCase()
+                                .contains(e.toLowerCase()))
+                            .toList();
+                      });
+                    },
+                    cursorColor: Colors.grey,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search_outlined,
+                        color: Colors.grey,
+                      ),
+                      focusColor: Colors.grey,
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      labelText: 'Search',
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: EasyBuyTheme.paddingL,
-                ),
-                Text(
-                  myProducts[index].name!,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                SizedBox(
-                  height: EasyBuyTheme.paddingM,
-                ),
-                Text(
-                  '\$${myProducts[index].price!}',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                SizedBox(
-                  height: EasyBuyTheme.paddingS,
-                ),
-                myProducts[index].colors != null
-                    ? Row(
-                        children: [
-                          Container(
-                            height: EasyBuyTheme.borderRadiusL * 2,
-                            width: EasyBuyTheme.borderRadiusL * 2,
-                            decoration: BoxDecoration(
-                              color: myProducts[index].colors![0].colorCode,
-                              borderRadius: BorderRadius.circular(
-                                  EasyBuyTheme.borderRadiusL),
-                            ),
-                          ),
-                          // myProducts[index].colors![1].colorCode != null
-                          //     ? Container(
-                          //         height: EasyBuyTheme.borderRadiusL * 2,
-                          //         width: EasyBuyTheme.borderRadiusL * 2,
-                          //         decoration: BoxDecoration(
-                          //           color:
-                          //               myProducts[index].colors![1].colorCode,
-                          //           borderRadius: BorderRadius.circular(
-                          //               EasyBuyTheme.borderRadiusL),
-                          //         ),
-                          //       )
-                          //     : const SizedBox(),
-                        ],
-                      )
-                    : const SizedBox(),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return FilterProductType(
+                          filterProductType: filterProductType,
+                          clearFilter: clearFilter,
+                          productTypeObj: productTypeObj,
+                          flitered: flitered,
+                        );
+                      },
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: EasyBuyTheme.paddingM),
+                    child: Text(
+                      "Filter",
+                      style: EasyBuyTheme.sortText,
+                    ),
+                  ),
+                )
               ],
-            );
-          },
+            ),
+            CategoryProductGrid(myProducts: myProducts),
+          ],
         ),
       ),
     );

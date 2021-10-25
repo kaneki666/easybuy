@@ -32,7 +32,7 @@ class _FormContainerState extends State<FormContainer> {
                 icon: const Icon(Icons.close)),
             bottom: TabBar(
               indicatorColor: EasyBuyTheme.colorTeal,
-              labelStyle: Theme.of(context).textTheme.headline3,
+              labelStyle: Theme.of(context).textTheme.headline5,
               tabs: const <Widget>[
                 Tab(
                   text: "Sign In",

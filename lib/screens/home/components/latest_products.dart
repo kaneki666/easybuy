@@ -23,18 +23,14 @@ class LatestProducts extends StatelessWidget {
                 height: 410,
                 width: 220,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Material(
-                      elevation: 1,
-                      child: Container(
-                        height: 320,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColorLight),
-                        child: Image.asset(
-                          demoProducts[index].images![0],
-                          height: 30,
-                          fit: BoxFit.cover,
-                        ),
+                    SizedBox(
+                      height: 320,
+                      child: Image.asset(
+                        demoProducts[index].images![0],
+                        height: 30,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     SizedBox(
@@ -42,7 +38,7 @@ class LatestProducts extends StatelessWidget {
                     ),
                     Text(
                       demoProducts[index].name!,
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headline6,
                     )
                   ],
                 )),

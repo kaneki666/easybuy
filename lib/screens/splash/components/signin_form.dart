@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:easybuy/components/button.dart';
+import 'package:easybuy/components/button_dark.dart';
 import 'package:easybuy/components/custom_textformfield.dart';
 import 'package:easybuy/constants/helperFunctions.dart';
 import 'package:easybuy/model/user.dart';
@@ -105,7 +106,7 @@ class _SignInFormState extends State<SignInForm> {
               children: [
                 Text(
                   "Sign Up for emails",
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Switch(
                   onChanged: (e) {
@@ -126,7 +127,7 @@ class _SignInFormState extends State<SignInForm> {
           ),
           Positioned(
             top: size.height * 0.45,
-            child: CustomButton(
+            child: CustomButtonDark(
               buttonText: "Sign In",
               onPress: () {
                 if (formKeySignIn.currentState!.validate()) {}
@@ -136,13 +137,16 @@ class _SignInFormState extends State<SignInForm> {
                     actionsPadding: EdgeInsets.only(
                         top: EasyBuyTheme.paddingXL,
                         bottom: EasyBuyTheme.paddingXL),
-                    backgroundColor: Theme.of(context).primaryColorLight,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     actionsAlignment: MainAxisAlignment.spaceEvenly,
                     actions: [
                       CircularProgressIndicator(
                         color: Theme.of(context).primaryColorDark,
                       ),
-                      const Text("Signing In")
+                      Text(
+                        "Signing In",
+                        style: Theme.of(context).textTheme.button,
+                      )
                     ],
                   ),
                 );

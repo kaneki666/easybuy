@@ -21,39 +21,62 @@ class EasyBuyTheme {
   //textthemelight
   static TextTheme lightTextTheme = const TextTheme(
     headline1: TextStyle(
-        fontSize: 40.0,
+        fontSize: 45.0,
+        fontWeight: FontWeight.w900,
+        color: Colors.black,
+        letterSpacing: 3,
+        fontFamily: "Teletex Regular"),
+    headline2: TextStyle(
+        fontSize: 35.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
         letterSpacing: 2,
         fontFamily: "Teletex Regular"),
-    headline2: TextStyle(
-        fontSize: 25.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-        letterSpacing: 1.8,
-        fontFamily: "Teletex Regular"),
     headline3: TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w500,
-      color: Colors.black,
-      letterSpacing: 1.8,
-    ),
-    headline4: TextStyle(
-      fontSize: 16.0,
+      fontSize: 30.0,
       fontWeight: FontWeight.w500,
       color: Colors.black,
       letterSpacing: 1.5,
     ),
+    headline4: TextStyle(
+      fontSize: 25.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      letterSpacing: 1.5,
+    ),
+    headline5: TextStyle(
+      fontSize: 20.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      letterSpacing: 1.5,
+    ),
+    headline6: TextStyle(
+      fontSize: 15.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      letterSpacing: 1.2,
+    ),
     bodyText1: TextStyle(
-        fontFamily: "Teletex Regular",
-        fontSize: 15,
-        letterSpacing: 1.5,
-        color: Colors.grey,
+        fontSize: 14,
+        letterSpacing: 0.8,
+        color: Colors.black,
         fontWeight: FontWeight.w300),
+    bodyText2: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w300,
+      color: Colors.white,
+      letterSpacing: 1.3,
+    ),
     button: TextStyle(
       fontSize: 16.0,
-      fontWeight: FontWeight.w400,
-      color: Colors.white,
+      fontWeight: FontWeight.w300,
+      color: Colors.black,
+      letterSpacing: 1.3,
+    ),
+    caption: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w300,
+      color: Colors.grey,
       letterSpacing: 1.3,
     ),
   );
@@ -75,39 +98,68 @@ class EasyBuyTheme {
   //textthemedark
   static TextTheme darkTextTheme = const TextTheme(
     headline1: TextStyle(
-        fontSize: 40.0,
+        fontSize: 45.0,
+        fontWeight: FontWeight.w900,
+        color: Colors.black,
+        letterSpacing: 3,
+        fontFamily: "Teletex Regular"),
+    headline2: TextStyle(
+        fontSize: 35.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
         letterSpacing: 2,
         fontFamily: "Teletex Regular"),
-    headline2: TextStyle(
-        fontSize: 25.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-        letterSpacing: 1.8,
-        fontFamily: "Teletex Regular"),
     headline3: TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w500,
-      color: Colors.white,
-      letterSpacing: 1.8,
-    ),
-    headline4: TextStyle(
-      fontSize: 16.0,
+      fontSize: 30.0,
       fontWeight: FontWeight.w500,
       color: Colors.white,
       letterSpacing: 1.5,
     ),
+    headline4: TextStyle(
+      fontSize: 25.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      letterSpacing: 1.5,
+    ),
+    headline5: TextStyle(
+      fontSize: 20.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      letterSpacing: 1.5,
+    ),
+    headline6: TextStyle(
+      fontSize: 15.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      letterSpacing: 1.2,
+    ),
     bodyText1: TextStyle(
-        fontFamily: "Teletex Regular",
-        fontSize: 15,
-        letterSpacing: 1.5,
-        color: Colors.grey,
+        fontSize: 14,
+        letterSpacing: 0.8,
+        color: Colors.white,
         fontWeight: FontWeight.w300),
+    bodyText2: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w300,
+      color: Colors.black,
+      letterSpacing: 1.3,
+    ),
     button: TextStyle(
       fontSize: 16.0,
-      fontWeight: FontWeight.w400,
-      color: Colors.black,
+      fontWeight: FontWeight.w300,
+      color: Colors.white,
+      letterSpacing: 1.3,
+    ),
+    caption: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w300,
+      color: Colors.grey,
+      letterSpacing: 1.3,
+    ),
+    overline: TextStyle(
+      fontSize: 12.0,
+      fontWeight: FontWeight.w300,
+      color: Colors.white,
       letterSpacing: 1.3,
     ),
   );
@@ -209,4 +261,11 @@ class EasyBuyTheme {
       letterSpacing: 1.5,
       color: colorDiscountPercentage,
       fontWeight: FontWeight.bold);
+
+  static TextStyle sortText = const TextStyle(
+    fontSize: 15.0,
+    fontWeight: FontWeight.w500,
+    color: Colors.teal,
+    letterSpacing: 1.2,
+  );
 }

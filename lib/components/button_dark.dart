@@ -1,8 +1,8 @@
 import 'package:easybuy/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomButtonDark extends StatelessWidget {
+  const CustomButtonDark({
     Key? key,
     required this.buttonText,
     required this.onPress,
@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               buttonText,
-              style: Theme.of(context).textTheme.button,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),

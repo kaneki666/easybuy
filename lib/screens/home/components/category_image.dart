@@ -29,7 +29,7 @@ class CategoryImage extends StatelessWidget {
           child: Center(
             child: Text(
               label,
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headline2,
             ),
           ),
           decoration: BoxDecoration(

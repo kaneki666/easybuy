@@ -1,15 +1,10 @@
+import 'package:easybuy/model/product_type.dart';
 import 'package:flutter/material.dart';
 
 enum Category {
   men,
   women,
   accessories,
-}
-
-enum ProductType {
-  dress,
-  shoe,
-  fragrance,
 }
 
 class ColorsModel {
@@ -44,14 +39,15 @@ List<ProductModel> demoProducts = [
   const ProductModel(
       name: 'LV VITESSE T-SHIRT DRESS',
       images: [
-        "assets/images/product/1_1.png",
+        "assets/images/product/1_1.webp",
         "assets/images/product/1_2.webp",
       ],
       price: 140,
       colors: [
-        ColorsModel(colorName: "NOIR BLANC", colorCode: Colors.black),
         ColorsModel(colorName: "ROGUE", colorCode: Colors.red),
+        ColorsModel(colorName: "NOIR BLANC", colorCode: Colors.black),
       ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
       description:
           'Crafted from a lightweight wool-blend knit, this casual T-shirt dress fits the figure to highlight a feminine silhouette. The capsule’s sporty LV Vitesse motif features as a row of contrasting patches across the bust and short sleeves, introducing a contemporary graphic feel. An easy-to-wear style with a signature spin.',
       category: Category.women,
@@ -60,13 +56,83 @@ List<ProductModel> demoProducts = [
       name: 'MINI T-SHIRT DRESS',
       images: [
         "assets/images/product/2_1.webp",
+        "assets/images/product/2_2.jpeg",
       ],
       price: 80,
       colors: [
         ColorsModel(colorName: "WHITE", colorCode: Colors.white),
       ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
       description:
           'A cornerstone silhouette from the collection pared back for a fresh, everyday look. This sleeveless mini T-shirt dress is cut from subtly shiny jersey, while a chain detail at the crew neck adds an iconic House touch. Clean, comfortable and easy to style.',
+      category: Category.women,
+      productType: ProductType.dress),
+  const ProductModel(
+      name: 'MURIA',
+      images: [
+        "assets/images/product/13_1.webp",
+        "assets/images/product/13_2.webp",
+      ],
+      price: 500,
+      sizes: [
+        "S",
+        "M",
+        "L",
+      ],
+      description:
+          'Perfect for plane travel, the Muria tote bag is made from supple Mahina perforated calfskin. The perforated Monogram pattern in the navy-blue calfskin is highlighted by the gradient whites and blues on the LVs and Monogram Flowers. A braided handle enables hand and elbow carry while a removable leather strap allows comfortable shoulder and cross-body wear.',
+      category: Category.women,
+      productType: ProductType.bag),
+  const ProductModel(
+      name: 'SPEEDY BANDOULIÈRE 25',
+      images: [
+        "assets/images/product/14_1.webp",
+        "assets/images/product/14_2.webp",
+      ],
+      sizes: [
+        "S",
+        "M",
+        "L",
+      ],
+      price: 80,
+      description:
+          'The compact Speedy Bandoulière 25 handbag is made from black Monogram Empreinte leather with the embossed Oversized Monogram pattern in beige. This sophisticated handbag was inspired by the House’s “Express” bag from 1930. Finished with gold-color hardware, the interior is lined in red. A detachable and adjustable shoulder strap, in addition to the top handles, enables carry options.',
+      category: Category.women,
+      productType: ProductType.bag),
+  const ProductModel(
+      name: 'FLORAL TRIM BALLOON SKIRT',
+      images: [
+        "assets/images/product/15_1.webp",
+        "assets/images/product/15_2.webp",
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      price: 140,
+      description:
+          'Tiers of contrasting textures introduce delicacy and drama to this balloon skirt from the runway. The waist is highlighted in silk sponge and cinched to create a subtle draping effect that emphasizes the volume and flows into airy wool crepe. Bold floral guipure lace trims the hemline for a final feminine flourish with an alluring lingerie spirit.',
+      category: Category.women,
+      productType: ProductType.pant),
+  const ProductModel(
+      name: 'COTTON SAILOR SHORTS',
+      images: [
+        "assets/images/product/16_1.jpeg",
+        "assets/images/product/16_2.webp",
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      price: 140,
+      description:
+          'Tiers of contrasting textures introduce delicacy and drama to this balloon skirt from the runway. The waist is highlighted in silk sponge and cinched to create a subtle draping effect that emphasizes the volume and flows into airy wool crepe. Bold floral guipure lace trims the hemline for a final feminine flourish with an alluring lingerie spirit.',
+      category: Category.women,
+      productType: ProductType.pant),
+  const ProductModel(
+      name: 'FLORAL LACE INSERT PULLOVER',
+      images: [
+        "assets/images/product/17_1.webp",
+        "assets/images/product/17_2.webp",
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      price: 140,
+      description:
+          'Tiers of contrasting textures introduce delicacy and drama to this balloon skirt from the runway. The waist is highlighted in silk sponge and cinched to create a subtle draping effect that emphasizes the volume and flows into airy wool crepe. Bold floral guipure lace trims the hemline for a final feminine flourish with an alluring lingerie spirit.',
       category: Category.women,
       productType: ProductType.dress),
   const ProductModel(
@@ -75,6 +141,7 @@ List<ProductModel> demoProducts = [
         "assets/images/product/3_1.webp",
         "assets/images/product/3_2.webp",
       ],
+      sizes: ["8", "9", "10"],
       price: 200,
       colors: [
         ColorsModel(colorName: "ROSE", colorCode: Colors.pinkAccent),
@@ -90,6 +157,7 @@ List<ProductModel> demoProducts = [
         "assets/images/product/4_1.webp",
         "assets/images/product/4_2.webp",
       ],
+      sizes: ["8", "9", "10"],
       price: 399,
       colors: [
         ColorsModel(colorName: "ECRU", colorCode: Color(0x0fC2B280)),
@@ -136,10 +204,7 @@ List<ProductModel> demoProducts = [
         "assets/images/product/7_2.webp",
       ],
       price: 199,
-      sizes: [
-        "50",
-        "60",
-      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
       description:
           "This functional parka is all about the season's Tie-and-Dye Galaxy Monogram motif. The pattern is played as an all-over jacquard weave on water-repellent technical wool, on a regular-fitting shape. Fully padded, it features a zipped opening with snap buttons, an adjustable waist and a plain lining.",
       category: Category.men,
@@ -151,10 +216,7 @@ List<ProductModel> demoProducts = [
         "assets/images/product/8_2.webp",
       ],
       price: 399,
-      sizes: [
-        "50",
-        "60",
-      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
       description:
           "High-tech Louis Vuitton signatures lend a futuristic feel to this new take on the classic peacoat. The signatures - Louis Vuitton on one sleeve, and LVM on the other - are injected into the wool-blend fabric using silicone. Cut in a regular fit, the piece features metallic buttons and a lining adorned with a handwritten Louis Vuitton motif.",
       category: Category.men,
@@ -170,10 +232,7 @@ List<ProductModel> demoProducts = [
         ColorsModel(colorName: "WHITE", colorCode: Colors.white),
         ColorsModel(colorName: "NOIR", colorCode: Colors.black),
       ],
-      sizes: [
-        "8",
-        "10",
-      ],
+      sizes: ["8", "9", "10"],
       description:
           "The Raspail moccasin is crafted from supple, grained calf leather, which is partially embossed with the Monogram pattern. The hand-stitched vamp is embellished with a knot accessory inspired by the world of sailing. This model has an authentic tubular construction, with no insole, for exceptional comfort, and a flexible outsole with small rubber nubs.",
       category: Category.men,
@@ -189,10 +248,7 @@ List<ProductModel> demoProducts = [
         ColorsModel(colorName: "BEIGE", colorCode: Colors.white),
         ColorsModel(colorName: "NOIR", colorCode: Color(0x0f946B45)),
       ],
-      sizes: [
-        "8",
-        "10",
-      ],
+      sizes: ["8", "9", "10"],
       description:
           "The Oberkampf ankle boot is revisited as part of the exclusive LV x NBA collection of ready-to-wear, accessories and leather goods. Combining nubuck leather and Monogram canvas, it is accessorized with a rubber tag featuring the NBA logo. The same signature is embossed on the tongue, while the sturdy rubber outsole is decorated with Monogram Flowers.",
       category: Category.men,

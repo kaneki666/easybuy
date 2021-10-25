@@ -18,13 +18,13 @@ class SplashScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/bgblack.jpg"),
+                image: AssetImage("assets/images/bgLight.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Positioned(
-            top: size.height * 0.45,
+            top: size.height * 0.07,
             child: Text(
               "EASYBUY",
               style: Theme.of(context).textTheme.headline1,
@@ -33,7 +33,7 @@ class SplashScreen extends StatelessWidget {
           Positioned(
             top: size.height * 0.75,
             child: CustomButton(
-              btnColor: Theme.of(context).primaryColorDark,
+              btnColor: Theme.of(context).primaryColorLight,
               buttonText: "Sign In",
               onPress: () {
                 showModalBottomSheet<void>(
@@ -49,7 +49,7 @@ class SplashScreen extends StatelessWidget {
           Positioned(
             top: size.height * 0.83,
             child: CustomButton(
-              btnColor: Theme.of(context).primaryColorDark,
+              btnColor: Theme.of(context).primaryColorLight,
               buttonText: "Create Account",
               onPress: () {
                 splashScaffoldKey.currentState?.showBottomSheet<void>(

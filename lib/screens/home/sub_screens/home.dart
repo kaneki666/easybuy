@@ -71,7 +71,7 @@ class Home extends StatelessWidget {
               padding: EdgeInsets.all(EasyBuyTheme.paddingM),
               child: Text(
                 "Latest Products",
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.headline5,
               ),
             ),
             const LatestProducts(),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:easybuy/components/button.dart';
+import 'package:easybuy/components/button_dark.dart';
 import 'package:easybuy/components/custom_textformfield.dart';
 import 'package:easybuy/constants/helperFunctions.dart';
 import 'package:easybuy/model/user.dart';
@@ -107,7 +108,7 @@ class _SignUpFormState extends State<SignUpForm> {
               children: [
                 Text(
                   "Sign Up for emails",
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Switch(
                   onChanged: (e) {
@@ -128,7 +129,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           Positioned(
             top: size.height * 0.45,
-            child: CustomButton(
+            child: CustomButtonDark(
               buttonText: "Create Account",
               onPress: () {
                 if (formKeySignUp.currentState!.validate()) {}
@@ -138,13 +139,16 @@ class _SignUpFormState extends State<SignUpForm> {
                     actionsPadding: EdgeInsets.only(
                         top: EasyBuyTheme.paddingXL,
                         bottom: EasyBuyTheme.paddingXL),
-                    backgroundColor: Theme.of(context).primaryColorLight,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     actionsAlignment: MainAxisAlignment.spaceEvenly,
                     actions: [
                       CircularProgressIndicator(
                         color: Theme.of(context).primaryColorDark,
                       ),
-                      const Text("Signing In")
+                      Text(
+                        "Signing Up",
+                        style: Theme.of(context).textTheme.button,
+                      )
                     ],
                   ),
                 );
@@ -152,7 +156,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   Navigator.of(context).pop();
                 });
               },
-              btnColor: Theme.of(context).primaryColorLight,
+              btnColor: Theme.of(context).primaryColorDark,
             ),
           ),
           Positioned(
